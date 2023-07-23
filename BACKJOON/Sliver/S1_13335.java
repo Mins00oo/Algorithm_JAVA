@@ -26,28 +26,22 @@ public class S1_13335 {
 		}
 
 		Queue<Integer> bridge = new LinkedList<>();
-
 		for (int i = 0; i < w; i++) {
 			bridge.add(0);
 		}
 
 		while (!bridge.isEmpty()) { // 다리에 아무것도 없을 때 까지
-			System.out.println(bridge.element() + " ");
 			brideWeight -= bridge.poll();
-			System.out.print(brideWeight + " ");
 			if (!truck.isEmpty()) { // 남은 트럭이 없을 때 까지
 				if (truck.peek() + brideWeight <= l) { // 다리에 얹을려는 트럭 무게랑 지금 다리 무게를 더했을때 l보다 작거나 같아야 함
 					brideWeight += truck.peek();
 					bridge.add(truck.poll());
-					System.out.println(bridge + " ");
-				} else {
+				} else { // add()를 안해주면 큐가 비어버려서 while문이 끝남! 트럭이 다 못 지나가고 끝나버림
 					bridge.add(0);
 				}
 			}
 			answer += 1;
 		}
-		
-		System.out.println();
 		
 		System.out.println(answer);
 	}
