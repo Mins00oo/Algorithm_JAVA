@@ -1,4 +1,4 @@
-package Gold;
+package BACKJOON.GOLD;
 
 import java.util.PriorityQueue;
 import java.util.Scanner;
@@ -33,3 +33,4 @@ public class G4_1715 {
 	}
 
 }
+
