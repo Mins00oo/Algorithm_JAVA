@@ -24,7 +24,7 @@ public class S1_13335 {
 		for (int i = 0; i < n; i++) {
 			truck.add(sc.nextInt());
 		}
-
+		
 		Queue<Integer> bridge = new LinkedList<>();
 		for (int i = 0; i < w; i++) {
 			bridge.add(0);
