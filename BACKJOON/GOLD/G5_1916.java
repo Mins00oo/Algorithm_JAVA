@@ -3,43 +3,91 @@ package BACKJOON.GOLD;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 /*
- * 1. 버스 정보를 갖고 있을 2차원 배열을 생성해서 담아준다. 행 길이는 버스 개수만큼 생성하고 열의 길이는 3
- * 2. 이제 주어진 출발 도시부터 시작해서 도착점까지 처음에 걸리는 비용을 min 최소로 잡는다
- * 3. 다음 탐색을 돌 때 전부 다 돌기보다는 이 최솟값보다 재귀하는 과정에서 더 비용이 커지면 그냥 리턴시킨다 -> 어차피 볼 필요가 없음
+ *
  */
 public class G5_1916 {
-	static int n; // 도시의 개수
-	static int m; // 버스의 개수
-	static int[][] busInfo; // 버스의 연결정보
+	static int n; // 도시의 개수 5개
+	static int m; // 버스의 개수 8개
+	static boolean[] visited;
+	static ArrayList<ArrayList<Node>> list;
+	static int[] dist; // 거리를 계속해서 더함
 	static StringTokenizer st;
-	static int start;
-	static int end;
-	static int min;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		n = Integer.parseInt(br.readLine());
 		m = Integer.parseInt(br.readLine());
-		busInfo = new int[m][3];
+		list = new ArrayList<>();
+		dist = new int[n + 1];
+		visited = new boolean[n + 1];
 
-		for (int i = 0; i < m; i++) { // 버스 연결 정보를 생성해서 넣어줌
-			st = new StringTokenizer(br.readLine(), " ");
-			busInfo[i][0] = Integer.parseInt(st.nextToken());
-			busInfo[i][1] = Integer.parseInt(st.nextToken());
-			busInfo[i][2] = Integer.parseInt(st.nextToken());
+		for (int i = 0; i <= n; i++) {
+			list.add(new ArrayList<>());
+		}
+
+		for (int i = 0; i < m; i++) { // ArrayList안에 노드 정보들을 ArrayList로 넣고
+			String[] s = br.readLine().split(" ");
+			int start = Integer.parseInt(s[0]);
+			int end = Integer.parseInt(s[1]);
+			int w = Integer.parseInt(s[2]);
+			list.get(start).add(new Node(end, w));
 		}
 
 		st = new StringTokenizer(br.readLine());
-		start = Integer.parseInt(st.nextToken()); // 시작점
-		end = Integer.parseInt(st.nextToken()); // 도착점
+		int s_node = Integer.parseInt(st.nextToken()); // 주어진 시작 노드
+		int e_node = Integer.parseInt(st.nextToken()); // 주어진 도착 노드
 
-		dfs(start, end, 0);
+//        for (int i = 1; i < list.length; i++) {
+//            System.out.println(list[i].toString());
+//        }
+
+		dijkstra(s_node);
+		System.out.println(dist[e_node]);
+
 	}
 
-	static void dfs(int s, int e, int c) {
+	static void dijkstra(int start) {
+		PriorityQueue<Node> queue = new PriorityQueue<>();
+		queue.offer(new Node(start, 0)); // 출발 도시와 거리 큐에 담고
+		Arrays.fill(dist, Integer.MAX_VALUE); // 거리는 전부 다 최댓값으로
+		dist[start] = 0;
+
+		while (!queue.isEmpty()) {
+//            System.out.println("queue = " + queue);
+			Node poll = queue.poll();
+//            System.out.println("poll.end = " + poll.end);
+			visited[poll.end] = true;
+			for (Node n : list.get(poll.end)) { // 출발 지점으로부터 도착할 수 있는 노드와 가중치 정보를 가져오고
+				if (visited[n.end]) { // 이동하려는 곳이 방문한 곳이라면 패스하고
+					continue;
+				}
+//                System.out.println(n);
+				if (dist[n.end] > dist[poll.end] + n.w) { // 바로 갈 수 있는 거리와 거쳐서 가는 거리 중 짧은 것으로 대체
+					dist[n.end] = dist[poll.end] + n.w;
+					queue.offer(new Node(n.end, dist[n.end]));
+				}
+			}
+		}
 	}
 
+}
+
+class Node implements Comparable<Node> {
+	int end, w;
+
+	public Node(int city, int w) {
+		this.end = city;
+		this.w = w;
+	}
+
+	@Override
+	public int compareTo(Node o) {
+		return this.w - o.w;
+	}
 }
