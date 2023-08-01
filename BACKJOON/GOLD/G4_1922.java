@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 
+/*
+1. 비용을 오름차순으로 정렬시켜준 후, 제일 비용이 적은거부터 연결을 해준다
+2. 이때, 사이클이 생기면 안됨!! 1->2 , 2->3 이렇게 되어 있는 상태라면 1->3을 연결하면 안됨
+ */
 public class G4_1922 {
 	static int n; // 컴퓨터의 수
 	static int m; // 연결할 수 있는 선의 수
@@ -44,7 +48,7 @@ public class G4_1922 {
 			if (union(net[0], net[1])) {
 				costs += net[2];
 			}
-			System.out.println(Arrays.toString(arr));
+//            System.out.println(Arrays.toString(arr));
 		}
 		System.out.println(costs);
 	}

@@ -56,6 +56,9 @@ public class S4_1244_스위치켜고끄기 {
 		}
 		for (int i = 1; i <= s_cnt; i++) {
 			System.out.print(switchs[i] + " ");
+			if (i % 20 == 0) {
+				System.out.println();
+			}
 		}
 	}
 
