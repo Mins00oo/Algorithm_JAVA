@@ -37,7 +37,7 @@ public class S4_1244_스위치켜고끄기 {
 
 		for (int i = 0; i < std_cnt; i++) {
 			if (stdInfo[i][0] == 1) {
-				for (int j = stdInfo[i][1]; j < s_cnt; j += stdInfo[i][1]) {
+				for (int j = stdInfo[i][1]; j <= s_cnt; j += stdInfo[i][1]) {
 					if (switchs[j] == 0) {
 						switchs[j] = 1;
 					} else {
@@ -60,7 +60,7 @@ public class S4_1244_스위치켜고끄기 {
 	}
 
 	static void fun(int n1, int n2) {
-		if (n1 < 1 || n2 > 8 || switchs[n1] != switchs[n2]) {
+		if (n1 < 1 || n2 > s_cnt || switchs[n1] != switchs[n2]) {
 			return;
 		}
 		if (switchs[n1] == switchs[n2]) {
