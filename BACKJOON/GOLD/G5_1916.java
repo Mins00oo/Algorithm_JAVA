@@ -71,6 +71,7 @@ public class G5_1916 {
 //		}
 		
 		while (!queue.isEmpty()) {
+			System.out.println(queue);
 			Node queNode = queue.poll();
 			if (!visited[queNode.end]) {
 				visited[queNode.end] = true;
@@ -97,5 +98,11 @@ class Node implements Comparable<Node> {
 	@Override
 	public int compareTo(Node o) {
 		return w - o.w;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "end: " + end + " w: " + w;
 	}
 }
