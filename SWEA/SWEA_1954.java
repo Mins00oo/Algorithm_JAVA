@@ -43,10 +43,11 @@ public class SWEA_1954 {
 		}
 		int nx = dx[dir] + x;
 		int ny = dy[dir] + y;
-		if (nx < 0 && nx >= n || ny < 0 && ny >= n || map[nx][ny] != 0) {
+		if (nx < 0 || nx >= n || ny < 0 || ny >= n || map[nx][ny] != 0) {
 			dir = (dir + 1) % 4;
+		} else {
+			sol(nx, ny, cnt + 1, length);	
 		}
-		sol(nx, ny, cnt + 1, length);
 	}
 
 }
