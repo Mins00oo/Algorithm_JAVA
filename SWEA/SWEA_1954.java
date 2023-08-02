@@ -2,7 +2,6 @@ package SWEA;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 /*
  * n = 3) 3 -> 2 -> 2 -> 1 -> 1
@@ -12,7 +11,7 @@ import java.util.StringTokenizer;
 public class SWEA_1954 {
 	static int T; // 테스트 케이스 개수
 	static int n; // 길이
-	static int[][] map;
+	static int[][] numbers;
 	static int[] dx = { 0, 1, 0, -1 };
 	static int[] dy = { 1, 0, -1, 0 };
 	static int dir;
@@ -20,33 +19,31 @@ public class SWEA_1954 {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
 		T = Integer.parseInt(br.readLine());
-		for (int t = 0; t < T; t++) {
+		for (int t = 1; t <= T; t++) {
 			dir = 0;
 			n = Integer.parseInt(br.readLine());
-			sol(0, 0, 1, n);
-		}
-	}
+			numbers = new int[n][n];
+			int x = 0, y = 0;
+			for (int i = 1; i <= n * n; i++) {
+				numbers[x][y] = i;
+				int nx = x + dx[dir];
+				int ny = y + dy[dir];
+				if (nx >= n || nx < 0 || ny >= n || ny < 0 || numbers[nx][ny] != 0) {
+					dir = (dir + 1) % 4;
+				}
+				x += dx[dir];
+				y += dy[dir];
 
-	static void sol(int x, int y, int cnt, int length) {
-		map = new int[n][n];
-		map[x][y] = cnt;
-		if (cnt == (n * n)) {
+			}
+			System.out.println("#" + t);
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
-					System.out.print(map[i][j]);
+					System.out.print(numbers[i][j] + " ");
 				}
 				System.out.println();
 			}
-			return;
 		}
-		int nx = dx[dir] + x;
-		int ny = dy[dir] + y;
-		if (nx < 0 && nx >= n || ny < 0 && ny >= n || map[nx][ny] != 0) {
-			dir = (dir + 1) % 4;
-		}
-		sol(nx, ny, cnt + 1, length);
 	}
 
 }
