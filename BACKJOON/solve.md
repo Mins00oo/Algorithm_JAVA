@@ -36,6 +36,7 @@
     * [[그리디, 우선순위 큐] 1715_카드 정렬하기](https://github.com/Mins00oo/Algorithm_JAVA/blob/main/BACKJOON/GOLD/G4_1715.java)
     * [[다익스트라] 1753_최단 경로](https://github.com/Mins00oo/Algorithm_JAVA/blob/main/BACKJOON/GOLD/G4_1753_%EC%B5%9C%EB%8B%A8%EA%B2%BD%EB%A1%9C.java)
     * [[그래프 이론, 최소 신장 트리] 1922_네트워크 연결](https://github.com/Mins00oo/Algorithm_JAVA/blob/main/BACKJOON/GOLD/G4_1922.java)
+    * [[최소 신장 트리] 1197_최소 스패닝 트리](https://github.com/Mins00oo/Algorithm_JAVA/blob/main/BACKJOON/GOLD/G4_1197_%EC%B5%9C%EC%86%8C%EC%8A%A4%ED%8C%A8%EB%8B%9D%ED%8A%B8%EB%A6%AC.java)
     * [[DFS, 트리] 3584_가장 가까운 공통 조상](https://github.com/Mins00oo/Algorithm_JAVA/blob/main/BACKJOON/GOLD/G4_3584_%EA%B0%80%EC%9E%A5%EA%B0%80%EA%B9%8C%EC%9A%B4%EA%B3%B5%ED%86%B5%EC%A1%B0%EC%83%81.java)
   
  * ## Gold5
