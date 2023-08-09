@@ -18,7 +18,7 @@ public class SWEA_1861_정사각형방 {
 		for (int t = 1; t <= T; t++) {
 			answer = 1;
 			point = Integer.MAX_VALUE;
-			
+
 			n = Integer.parseInt(br.readLine());
 			map = new int[n][n];
 			for (int i = 0; i < n; i++) {
