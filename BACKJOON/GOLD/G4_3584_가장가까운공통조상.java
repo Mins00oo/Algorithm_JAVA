@@ -44,6 +44,8 @@ public class G4_3584_가장가까운공통조상 {
 		}
 		// 다른 부모일 경우 각자 부모를 계속 찾아가면서 비교
 		while (true) {
+			int i1 = n1;
+			int i2 = n2;
 			
 		}
 
