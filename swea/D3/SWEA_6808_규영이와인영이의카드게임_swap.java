@@ -6,13 +6,11 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // 18개 카드 중에 규영이의 카드 9개 고정되고 나머지 9개 카드의 순서에 따라 승부가 갈라짐
-public class SWEA_6808_규영이와인영이의카드게임 {
+public class SWEA_6808_규영이와인영이의카드게임_swap {
     static int T, win, lose, n = 9;
     static int[] input = new int[19];
     static int[] guCard = new int[9];
     static int[] inCard = new int[9]; // 인영이의 카드
-    static int[] tgt = new int[9]; // 순열을 통해 배치될 카드
-    static boolean[] select = new boolean[9];
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws Exception {
@@ -43,19 +41,23 @@ public class SWEA_6808_규영이와인영이의카드게임 {
 
     }
 
-    static void perm(int tgtIdx) {
-        if (tgtIdx == n) {
+    static void perm(int srcIdx) {
+        if (srcIdx == n) {
             check();
             return;
         }
-        for (int i = 0; i < n; i++) {
-            if (select[i]) {
-                continue;
-            }
-            tgt[tgtIdx] = inCard[i];
-            select[i] = true;
-            perm(tgtIdx + 1);
-            select[i] = false;
+        // i는 srcIdx부터 (자기 자신 포함)
+        for (int i = srcIdx; i < inCard.length; i++) {
+            // i와 srcIdx를 교환
+            int temp = inCard[srcIdx];
+            inCard[srcIdx] = inCard[i];
+            inCard[i] = temp;
+
+            perm(srcIdx + 1);
+            // i와 srcIdx 교환 원복
+            temp = inCard[srcIdx];
+            inCard[srcIdx] = inCard[i];
+            inCard[i] = temp;
         }
     }
 
@@ -63,10 +65,10 @@ public class SWEA_6808_규영이와인영이의카드게임 {
         int guSum = 0;
         int inSum = 0;
         for (int i = 0; i < n; i++) {
-            if (guCard[i] > tgt[i]) {
-                guSum += guCard[i] + tgt[i];
+            if (guCard[i] > inCard[i]) {
+                guSum += guCard[i] + inCard[i];
             } else {
-                inSum += guCard[i] + tgt[i];
+                inSum += guCard[i] + inCard[i];
             }
         }
         if (guSum > inSum) {

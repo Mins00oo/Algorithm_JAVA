@@ -6,13 +6,13 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // 18개 카드 중에 규영이의 카드 9개 고정되고 나머지 9개 카드의 순서에 따라 승부가 갈라짐
-public class SWEA_6808_규영이와인영이의카드게임 {
+public class SWEA_6808_규영이와인영이의카드게임_mask {
     static int T, win, lose, n = 9;
     static int[] input = new int[19];
     static int[] guCard = new int[9];
     static int[] inCard = new int[9]; // 인영이의 카드
     static int[] tgt = new int[9]; // 순열을 통해 배치될 카드
-    static boolean[] select = new boolean[9];
+//    static boolean[] select = new boolean[9];
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws Exception {
@@ -36,26 +36,26 @@ public class SWEA_6808_규영이와인영이의카드게임 {
                     inCard[num++] = i;
                 }
             }
-            perm(0);
+            perm(0, 0);
             sb.append("#").append(t).append(" ").append(win).append(" ").append(lose).append("\n");
         }
         System.out.println(sb);
 
     }
 
-    static void perm(int tgtIdx) {
+    static void perm(int tgtIdx, int mask) {
         if (tgtIdx == n) {
             check();
             return;
         }
         for (int i = 0; i < n; i++) {
-            if (select[i]) {
+            if ((mask & 1 << i) != 0) {
                 continue;
             }
             tgt[tgtIdx] = inCard[i];
-            select[i] = true;
-            perm(tgtIdx + 1);
-            select[i] = false;
+//            select[i] = true;
+            perm(tgtIdx + 1, mask | 1 << i);
+//            select[i] = false;
         }
     }
 
