@@ -1,4 +1,4 @@
-package SWEA;
+package swea.D2;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
  * n = 4) 4 -> 3 -> 3 -> 2 -> 2 -> 1 -> 1
  * n = 5) 5 -> 4 -> 
  */
-public class SWEA_1954 {
+public class SWEA_1954_달팽이숫자 {
 	static int T; // 테스트 케이스 개수
 	static int n; // 길이
 	static int[][] numbers;

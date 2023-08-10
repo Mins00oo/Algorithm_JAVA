@@ -1,8 +1,8 @@
-package SWEA;
+package swea.D2;
 
 import java.util.Scanner;
 
-public class SWEA_1204 {
+public class SWEA_1204_최빈수구하기 {
 
 	public static void main(String args[]) throws Exception {
 		Scanner sc = new Scanner(System.in);

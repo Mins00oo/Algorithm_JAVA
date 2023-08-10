@@ -1,8 +1,8 @@
-package SWEA;
+package swea.D2;
 
 import java.util.Scanner;
 
-public class SWEA_1961 {
+public class SWEA_1961_숫자배열회전 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

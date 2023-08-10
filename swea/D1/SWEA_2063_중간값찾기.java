@@ -1,9 +1,9 @@
-package SWEA;
+package swea.D1;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class SWEA_2063 {
+public class SWEA_2063_중간값찾기 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

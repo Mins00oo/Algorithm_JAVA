@@ -1,4 +1,4 @@
-package SWEA;
+package swea.D3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
  * 1) 주어지는 문자열을 입력받아서 배열에 저장한 후, 1-> 0 혹은 0->1 이런식으로 바로 옆의 수가 바뀌게 되면 count를 1씩 늘려나감. 이때, 첫 문자열이 1일때는 먼저 +1을 해주고 시작
  * 2) 초기화된 메모리와 비교한다고 생각했을때 비교하는 대상을 만들어준다. 첫 값은 0이 될거고 배열을 순환하면서 다른 값이 나온다면 비교 기준값을 그 값으로 바꿔주고 count+1을 해준다.
  */
-public class SWEA_1289 {
+public class SWEA_1289_원재의메모리복구하기 {
 	static int t; // 테스트 케이스
 
 //	public static void main(String[] args) throws Exception {

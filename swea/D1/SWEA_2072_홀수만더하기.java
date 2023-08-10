@@ -1,8 +1,8 @@
-package SWEA;
+package swea.D1;
 
 import java.util.Scanner;
 
-public class SWEA_2072 {
+public class SWEA_2072_홀수만더하기 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();    // 반복 횟수

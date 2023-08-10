@@ -1,8 +1,8 @@
-package SWEA;
+package swea.D2;
 
 import java.util.Scanner;
 
-public class SWEA_1959 {
+public class SWEA_1959_두개의숫자열 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
