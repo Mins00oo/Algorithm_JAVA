@@ -10,7 +10,6 @@ import java.util.Arrays;
  */
 public class 백준_2839_설탕배달_메모이제이션 {
 	static int n, totalCnt;
-	static int[] type = { 5, 3 };
 	static int[] d;
 	static StringBuilder sb = new StringBuilder();
 
@@ -18,6 +17,12 @@ public class 백준_2839_설탕배달_메모이제이션 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		n = Integer.parseInt(br.readLine());
 		// 전에 값을 가져와서 최솟값을 넣어줄 것이기 때문에
+		//민수 어디갔어 이거 키압 50이구나 내껀 좀 더 가벼운데 보글보글 괜찮다 손목이 아프진 않니?
+		//나 잠와 죽겠ㅆ어 -> 누구십니까
+		
+		
+		// 화이팅 해 민수야 수업 3시간 밖에 안남았어
+		
 		d = new int[n + 5];
 		Arrays.fill(d, 5000);
 		d[3] = 1;
