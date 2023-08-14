@@ -58,6 +58,7 @@ public class 백준_1992_쿼드트리 {
 				}
 			}
 		}
+		// 전부 다 같다면 true를 리턴, 다르다면 false를 리턴
 		return true;
 	}
 }
