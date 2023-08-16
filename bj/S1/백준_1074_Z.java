@@ -27,7 +27,6 @@ public class 백준_1074_Z {
 			solve(n / 2, r, c);
 		} else if (r < n / 2 && c >= n / 2) { // 오른쪽 위에
 			cnt += (n / 2) * (n / 2);
-			System.out.println(cnt);
 			solve(n / 2, r, c - (n / 2));
 		} else if (r >= n / 2 && c < n / 2) {
 			cnt += ((n / 2) * (n / 2)) * 2;
