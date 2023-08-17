@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class 백준_13023_ABCDE {
+public class BOJ_13023_ABCDE {
 	static int n, m;
 	static boolean[] visited;
 	static List<List<Integer>> list;

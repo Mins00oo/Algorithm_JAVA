@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 /*
  * Bottom up방식으로 풀이
  */
-public class 백준_1992_쿼드트리_BottomUP {
+public class BOJ_1992_쿼드트리_BottomUP {
 	static int n;
 	static int[][] map;
 

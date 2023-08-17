@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 백준_6987_월드컵 {
+public class BOJ_6987_월드컵 {
 	static int[] win, lose, draw; // 승, 패, 무 저장
 	static int[][] game; // for=for match 진행을 이어갈 배열
 

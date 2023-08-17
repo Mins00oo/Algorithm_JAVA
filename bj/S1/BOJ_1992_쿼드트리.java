@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 /*
  * 전체를 탐색해서 전부 다 똑같은건지 check해주는데 0이면 0리턴 1이면 1리턴해서 sb에 추가
  */
-public class 백준_1992_쿼드트리 {
+public class BOJ_1992_쿼드트리 {
 	static int n;
 	static int[][] map;
 	static StringBuilder sb = new StringBuilder();

@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
  * dfs void로 리턴타입을 설정하면 안됨!! -> for문에서 특정 방향으로 파이프를 연결했다면 다른 루트를 보면 안되는데
  * 재귀 밖으로 나와서 for문에서도 다음 값으로 또 들어가기 때문에 제출하면 실패로 나옴!
  */
-public class 백준_3109_빵집 {
+public class BOJ_3109_빵집 {
 	static int R, C, ans;
 	static int[][] map;
 

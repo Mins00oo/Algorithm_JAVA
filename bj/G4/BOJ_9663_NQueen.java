@@ -2,7 +2,7 @@ package bj.G4;
 
 import java.util.Scanner;
 
-public class 백준_9663_NQueen {
+public class BOJ_9663_NQueen {
 	static int n, col[], ans;
 
 	public static void main(String[] args) {

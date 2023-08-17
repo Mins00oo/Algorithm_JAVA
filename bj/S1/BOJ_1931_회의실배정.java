@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class 백준_1931_회의실배정 {
+public class BOJ_1931_회의실배정 {
 	static int n;
 	static int cnt = 1;
 	static ArrayList<Node> list = new ArrayList<>();

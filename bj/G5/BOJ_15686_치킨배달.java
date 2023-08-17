@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class 백준_15686_치킨배달 {
+public class BOJ_15686_치킨배달 {
 	static int n, m;
 	static int answer = Integer.MAX_VALUE;
 	static int map[][];
