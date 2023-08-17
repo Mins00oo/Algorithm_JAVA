@@ -10,7 +10,6 @@ public class 백준_13023_ABCDE {
 	static int n, m;
 	static boolean[] visited;
 	static List<List<Integer>> list;
-	static StringBuilder sb = new StringBuilder();
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -35,16 +34,12 @@ public class 백준_13023_ABCDE {
 		for (int i = 0; i < n; i++) {
 			visited[i] = true;
 			if (dfs(i, 0)) {
-				sb.append(1);
-				break;
+				System.out.println(1);
+				return;
 			}
 			visited[i] = false;
 		}
-
-		if (!sb.toString().equals("1")) {
-			sb.append(0);
-		}
-		System.out.println(sb);
+		System.out.println(0);
 	}
 
 	static boolean dfs(int x, int depth) {
