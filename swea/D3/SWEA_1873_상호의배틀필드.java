@@ -77,6 +77,7 @@ public class SWEA_1873_상호의배틀필드 {
 			case 'U':
 				// 방향 바꿔주고
 				dir = 1;
+				map[x][y] = '^';
 				// 범위 밖이면 패스
 				if (x - 1 < 0) {
 					continue;
@@ -93,6 +94,7 @@ public class SWEA_1873_상호의배틀필드 {
 			case 'D':
 				// 방향 바꿔주고
 				dir = 2;
+				map[x][y] = 'v';
 				// 범위 밖이면 패스
 				if (x + 1 >= h) {
 					continue;
@@ -109,6 +111,7 @@ public class SWEA_1873_상호의배틀필드 {
 			case 'L':
 				// 방향 바꿔주고
 				dir = 3;
+				map[x][y] = '<';
 				// 범위 밖이면 패스
 				if (y - 1 < 0) {
 					continue;
@@ -125,7 +128,7 @@ public class SWEA_1873_상호의배틀필드 {
 			case 'R':
 				// 방향 바꿔주고
 				dir = 4;
-
+				map[x][y] = '>';
 				// 범위 밖이면 패스
 				if (y + 1 >= w) {
 					continue;
