@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class G4_14502 {
+public class BOJ_14502_연구소 {
     static StringTokenizer st;
     static int[][] map;
     static int n; // 세로 크기
