@@ -88,62 +88,48 @@ public class BOJ_17281_야구공 {
 						break;
 					case 1: // 1루타
 						// 3루부터 확인해서 주자가 있으면 점수 추가해주고 주자 없는걸로 처리해주고
-						if (base[3]) {
-							score++;
-							base[3] = false;
-						}
-						if (base[2]) {
-							base[2] = false;
-							base[3] = true;
-						}
-						if (base[1]) {
-							base[2] = true;
-							base[1] = false;
+						for (int k = 3; k >= 1; k--) {
+							if (base[k]) {
+								if (k == 3) {
+									score++;
+									base[k] = false;
+									continue;
+								}
+								base[k] = false;
+								base[k + 1] = true;
+							}
 						}
 						base[1] = true;
 						break;
 					case 2: // 2루타
-						if (base[3]) {
-							score++;
-							base[3] = false;
-						}
-						if (base[2]) {
-							score++;
-							base[2] = false;
-						}
-						if (base[1]) {
-							base[3] = true;
-							base[1] = false;
+						for (int k = 3; k >= 1; k--) {
+							if (base[k]) {
+								if (k == 3 || k == 2) {
+									score++;
+									base[k] = false;
+									continue;
+								}
+								base[k] = false;
+								base[k + 2] = true;
+							}
 						}
 						base[2] = true;
 						break;
 					case 3: // 3루타
-						if (base[3]) {
-							score++;
-							base[3] = false;
-						}
-						if (base[2]) {
-							score++;
-							base[2] = false;
-						}
-						if (base[1]) {
-							score++;
-							base[1] = false;
+						for (int k = 3; k >= 1; k--) {
+							if (base[k]) {
+								score++;
+								base[k] = false;
+							}
 						}
 						base[3] = true;
 						break;
 					case 4: // 홈런
-						if (base[3]) {
-							score++;
-							base[3] = false;
-						}
-						if (base[2]) {
-							score++;
-							base[2] = false;
-						}
-						if (base[1]) {
-							score++;
-							base[1] = false;
+						for (int k = 3; k >= 1; k--) {
+							if (base[k]) {
+								score++;
+								base[k] = false;
+							}
 						}
 						score++;
 						break;
@@ -157,7 +143,7 @@ public class BOJ_17281_야구공 {
 						break outer;
 					}
 				}
-				
+
 				start = 1;
 			}
 		}

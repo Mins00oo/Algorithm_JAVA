@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class BOJ_17135_캐슬디펜스 {
+public class BOJ_17135_캐슬디펜스2 {
 	static int n, m, d, ans;
 	static int[] arrow;
+	static List<Monster> enemyCopy = new ArrayList<>();
 	static List<Monster> enemy = new ArrayList<>(); // 적의 위치를 담을 공간
 	static PriorityQueue<Monster> pq = new PriorityQueue<>((e1, e2) -> e1.h == e2.h ? e1.y - e2.y : e1.h - e2.h);
 
@@ -41,8 +42,7 @@ public class BOJ_17135_캐슬디펜스 {
 	static void locate(int srcIdx, int tgtIdx) {
 		if (tgtIdx == 3) {
 			// 공격전에 기존 몬스터 배치를 복사해서 카운트를 하도록
-			List<Monster> copy = copy(enemy);
-			attack(copy);
+			attack();
 			return;
 		}
 		for (int i = srcIdx; i < m; i++) {
@@ -52,16 +52,21 @@ public class BOJ_17135_캐슬디펜스 {
 	}
 
 	// 적을 제거
-	static void attack(List<Monster> list) {
+	static void attack() {
 		int dead = 0;
-
+		enemyCopy.clear();
+		
+		for (Monster e : enemy) {
+			enemyCopy.add(new Monster(e.x, e.y)); // 객체를 공유하지 않고, 내용만 복사해서 새로운 객체 생성
+		}
+		
 		while (true) {
 
 			for (int i = 0; i < 3; i++) { // 각 궁수마다 잡을 몬스터
 				pq.clear();
 
-				for (int j = 0; j < list.size(); j++) { // 몬스터와의 거리를 계산해서 사정거리 안에 있는지
-					Monster monster = list.get(j);
+				for (int j = 0; j < enemyCopy.size(); j++) { // 몬스터와의 거리를 계산해서 사정거리 안에 있는지
+					Monster monster = enemyCopy.get(j);
 					monster.h = Math.abs(monster.x - n) + Math.abs(monster.y - arrow[i]);
 
 					if (monster.h <= d) {
@@ -69,35 +74,26 @@ public class BOJ_17135_캐슬디펜스 {
 						pq.offer(monster);
 					}
 				}
-
-//				for (Monster monster : pq) {
-//					System.out.println("monster.x" + monster.x + " monster.y = " + monster.y);
-//				}
 				// pq안에 있는 몬스터들은 죽었다라고 표시를 해두고
 				if (!pq.isEmpty()) {
 					pq.poll().isDead = true;
 				}
 			}
-
-//			System.out.println("====");
-
+			
 			// 죽은 적군을 enemy 제거, 남은 적군 한 칸 아래로 이동, 경계선을 벗어나면 enemy 에서 제거
-			for (int i = list.size() - 1; i >= 0; i--) {
-				Monster e = list.get(i);
+			for (int i = enemyCopy.size() - 1; i >= 0; i--) {
+				Monster e = enemyCopy.get(i);
 				if (e.isDead) {
-//					System.out.println("e.x" + e.x + " e.y = " + e.y);
-					list.remove(i);
+					enemyCopy.remove(i);
 					dead++;
 				} else if (e.x == n - 1) {
-					list.remove(i);
+					enemyCopy.remove(i);
 				} else {
 					e.x++;
 				}
 			}
-
-//			System.out.println("=====");
-
-			if (list.size() == 0) {
+			
+			if (enemyCopy.size() == 0) {
 				break;
 			}
 		}
