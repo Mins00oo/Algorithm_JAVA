@@ -108,10 +108,10 @@ public class BOJ_17135_캐슬디펜스 {
 
 	static List<Monster> copy(List<Monster> list) {
 		List<Monster> temp = new ArrayList<>();
-
+		// 여기서 새로운 Monster객체를 넣어줘야 하기 때문에 new를 통해 생성해줘야 함!!
 		for (int i = 0; i < list.size(); i++) {
 			Monster monster = list.get(i);
-			temp.add(monster);
+			temp.add(new Monster(monster.x, monster.y));
 		}
 
 		return temp;
