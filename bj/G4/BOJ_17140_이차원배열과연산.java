@@ -34,17 +34,16 @@ public class BOJ_17140_이차원배열과연산 {
 		int ans = -1;
 
 		while (cnt <= 100) {
-			if (map[r - 1][c- 1] == k) {
+			if (map[r][c] == k) {
 				ans = cnt;
 				break;
 			}
-			
+
 			if (row_length >= col_length) {
 				r();
 			} else {
 				c();
 			}
-			
 			cnt++;
 
 		}
@@ -57,9 +56,9 @@ public class BOJ_17140_이차원배열과연산 {
 		int col = 0;
 		int[][] map_copy = new int[101][101];
 
-		for (int i = 0; i < row_length; i++) {
+		for (int i = 1; i <= row_length; i++) {
 			HashMap<Integer, Integer> hash = new HashMap<>();
-			for (int j = 0; j < col_length; j++) {
+			for (int j = 1; j <= col_length; j++) {
 				if (map[i][j] == 0) {
 					continue;
 				}
@@ -81,8 +80,8 @@ public class BOJ_17140_이차원배열과연산 {
 
 			for (int k = 0; k < list.size(); k++) {
 				Node node = list.get(k);
-				map_copy[i][2 * k] = node.num;
-				map_copy[i][2 * k + 1] = node.cnt;
+				map_copy[i][2 * k + 1] = node.num;
+				map_copy[i][2 * k + 2] = node.cnt;
 			}
 		}
 
@@ -93,10 +92,10 @@ public class BOJ_17140_이차원배열과연산 {
 	static void c() {
 		int[][] map_copy = new int[101][101];
 		int row = 0;
-		
-		for (int j = 0; j < col_length; j++) {
+
+		for (int j = 1; j <= col_length; j++) {
 			HashMap<Integer, Integer> hash = new HashMap<>();
-			for (int i = 0; i < row_length; i++) {
+			for (int i = 1; i <= row_length; i++) {
 				if (map[i][j] == 0)
 					continue;
 				if (hash.containsKey(map[i][j])) {
@@ -106,23 +105,23 @@ public class BOJ_17140_이차원배열과연산 {
 				}
 			}
 			ArrayList<Node> list = new ArrayList<>();
-			
+
 			for (Map.Entry<Integer, Integer> entry : hash.entrySet()) {
 				list.add(new Node(entry.getKey(), entry.getValue()));
 			}
-			
+
 			row = Math.max(row, list.size() * 2);
 			Collections.sort(list);
-			
+
 			for (int p = 0; p < list.size(); p++) {
 				if (p >= 50)
 					break;
 				Node node = list.get(p);
-				map_copy[2 * p][j] = node.num;
-				map_copy[2 * p + 1][j] = node.cnt;
+				map_copy[2 * p + 1][j] = node.num;
+				map_copy[2 * p + 2][j] = node.cnt;
 			}
 		}
-		
+
 		row_length = Math.min(99, row);
 		map = map_copy;
 	}
