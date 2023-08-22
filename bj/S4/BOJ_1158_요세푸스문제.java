@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
  * 그래서 앞에 값들을 꺼내서 뒤로 보내고 해당 위치에 해당하는 값을 제거하도록 함
  * 메모리 상으로는 배열이 훨씬 낫다는 것을 알 수 있음
  */
-public class S4_1158_요세푸스문제 {
+public class BOJ_1158_요세푸스문제 {
 	static StringTokenizer st;
 	static int n, k, arr[];
 	static StringBuilder sb = new StringBuilder();
