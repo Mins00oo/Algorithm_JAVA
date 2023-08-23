@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+/*
+ * 조금 헷갈리는 문제.. 
+ * '3+8*7-9*2' 이러한 테케의 경우 괄호를 추가할 때 백트래킹을 통해 어느 경우까지 고려가 되는건지
+ */
 public class BOJ_16637_괄호추가하기 {
 	static int n;
 	static int max = Integer.MIN_VALUE;
@@ -17,33 +21,38 @@ public class BOJ_16637_괄호추가하기 {
 
 		String t = br.readLine();
 		for (int i = 0; i < n; i++) {
+			// 숫자가 오는 위치
 			if (i % 2 == 0) {
 				num.add(t.charAt(i) - '0');
 			} else {
+				// 연산자가 오는 위치
 				op.add(t.charAt(i));
 			}
 		}
-		
+
 		int start = num.get(0);
-		
+
 		dfs(0, start);
-		
+
 		System.out.println(max);
 	}
 
-	public static void dfs(int now, int sum) {
-		if (now >= op.size()) {
+	static void dfs(int idx, int sum) {
+		// 기저조건
+		if (idx == op.size()) {
 			max = Math.max(max, sum);
 			return;
 		}
-		// 1. 괄호 안치고 진행하기
-		int one = cal(now, sum, num.get(now + 1));
-		dfs(now + 1, one);
-		// 2. 괄호 치고 진행하기
-		if (now + 1 < op.size()) { // 인덱스 범위 오류를 제거하기 위해
-			int two = cal(now + 1, num.get(now + 1), num.get(now + 2));
-			int result = cal(now, sum, two);
-			dfs(now + 2, result);
+		// 괄호를 안 치는 경우
+		int res = cal(idx, sum, num.get(idx + 1));
+		dfs(idx + 1, res);
+		// 괄호를 치는 경우를 백트래킹으로
+		if (idx + 1 < op.size()) {
+			// 괄호를 친 경우의 수식 결과
+			int temp = cal(idx + 1, num.get(idx + 1), num.get(idx + 2));
+			// sum과 temp의 위치가 바뀌면 안됨! 왼쪽부터 수식이 진행되기 때문에
+			int result = cal(idx, sum, temp);
+			dfs(idx + 2, result);
 		}
 	}
 
