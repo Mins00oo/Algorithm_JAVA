@@ -31,7 +31,7 @@ public class BOJ_17140_이차원배열과연산 {
 		row_length = 3;
 		col_length = 3;
 		int cnt = 0;
-		int ans = -1;
+		int ans = -1; // 100초가 지나도 안되면 ans는 -1로 출력
 
 		while (cnt <= 100) {
 			if (map[r][c] == k) {
@@ -53,43 +53,49 @@ public class BOJ_17140_이차원배열과연산 {
 	}
 
 	static void r() {
-		int col = 0;
 		int[][] map_copy = new int[101][101];
+		int col = 0;
 
 		for (int i = 1; i <= row_length; i++) {
-			HashMap<Integer, Integer> hash = new HashMap<>();
+			HashMap<Integer, Integer> hashMap = new HashMap<>();
+			// 각 행에 대해 숫자가 몇번 나왔는지 확인해서 hash에 넣어주고
 			for (int j = 1; j <= col_length; j++) {
+				// 0인 좌표는 그냥 패스하고
 				if (map[i][j] == 0) {
 					continue;
 				}
-				// 기존에 이미 나왔던 숫자라면 그 숫자의 value +1를 해주고
-				if (hash.containsKey(map[i][j])) {
-					hash.put(map[i][j], hash.get(map[i][j]) + 1);
+				// 이미 해당 값이 hash안에 있다면 value +1만 시켜주면 됨
+				if (hashMap.containsKey(map[i][j])) {
+					hashMap.put(map[i][j], hashMap.get(map[i][j]) + 1);
 				} else {
-					hash.put(map[i][j], 1);
+					hashMap.put(map[i][j], 1);
 				}
 			}
 			ArrayList<Node> list = new ArrayList<>();
-
-			for (Map.Entry<Integer, Integer> entry : hash.entrySet()) {
+			for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
+//				System.out.println("key= " + entry.getKey());
+//				System.out.println("value= " + entry.getValue());
 				list.add(new Node(entry.getKey(), entry.getValue()));
 			}
-
-			Collections.sort(list);
+			// 최대 길이는 list의 길이 * 2배이기 때문에!
 			col = Math.max(col, list.size() * 2);
+			Collections.sort(list);
 
 			for (int k = 0; k < list.size(); k++) {
 				Node node = list.get(k);
+//				System.out.println("node.x" + node.num);
+//				System.out.println("node.y" + node.cnt);
 				map_copy[i][2 * k + 1] = node.num;
 				map_copy[i][2 * k + 2] = node.cnt;
 			}
+//			System.out.println("===");
 		}
-
-		col_length = Math.min(99, col);
+		col_length = col;
 		map = map_copy;
 	}
 
 	static void c() {
+		// 새로운 map을 계속 생성해서 열 1개씩 새롭게 만들어주고 최종적으로 그걸 map에 덮어씌우는 식으로!
 		int[][] map_copy = new int[101][101];
 		int row = 0;
 
@@ -114,15 +120,13 @@ public class BOJ_17140_이차원배열과연산 {
 			Collections.sort(list);
 
 			for (int p = 0; p < list.size(); p++) {
-				if (p >= 50)
-					break;
 				Node node = list.get(p);
 				map_copy[2 * p + 1][j] = node.num;
 				map_copy[2 * p + 2][j] = node.cnt;
 			}
 		}
 
-		row_length = Math.min(99, row);
+		row_length = row;
 		map = map_copy;
 	}
 
