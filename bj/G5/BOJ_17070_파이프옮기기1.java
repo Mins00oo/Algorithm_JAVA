@@ -87,15 +87,18 @@ public class BOJ_17070_파이프옮기기1 {
 
 	static boolean isValid(Node node, int now) {
 		if (now == 0) {
+			// 범위 안에 있고 이동하려는 좌표가 1이 아닌지 체크
 			if (node.y + 1 <= N && map[node.x][node.y + 1] != 1) {
 				return true;
 			}
 		} else if (now == 1) {
+			// 범위안에 있는지 확인하고, 갈려는 좌표와 더불어 나머지 2개의 좌표도 동시에 1이 아니어야 대각선으로 이동이 가능!
 			if (node.x + 1 <= N && node.y + 1 <= N && map[node.x + 1][node.y + 1] != 1 && map[node.x][node.y + 1] != 1
 					&& map[node.x + 1][node.y] != 1) {
 				return true;
 			}
 		} else if (now == 2) {
+			// 범위 안에 존재하고 이동하려는 좌표가 1이 아닌지 확인
 			if (node.x + 1 <= N && map[node.x + 1][node.y] != 1) {
 				return true;
 			}

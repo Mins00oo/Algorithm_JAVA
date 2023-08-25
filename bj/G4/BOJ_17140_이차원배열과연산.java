@@ -46,6 +46,13 @@ public class BOJ_17140_이차원배열과연산 {
 			}
 			cnt++;
 
+			for (int i = 1; i <= 15; i++) {
+				for (int j = 1; j <= 15; j++) {
+					System.out.print(map[i][j] + " ");
+				}
+				System.out.println();
+			}
+
 		}
 
 		System.out.println(ans);
