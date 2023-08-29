@@ -12,8 +12,4 @@ public class BOJ_12865_평범한배낭 {
         StringTokenizer st = new StringTokenizer(br.readLine());
 	}
 
-	
-	static class Stuff{
-		int 
-	}
 }

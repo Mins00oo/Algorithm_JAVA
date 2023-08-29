@@ -69,10 +69,12 @@ public class SWEA_1767_프로세서연결하기 {
 			for (int i = 0; i < N; i++)
 				for (int j = 0; j < N; j++)
 					arr[i][j] = sc.nextInt();
+
 			for (int i = 1; i < N - 1; i++)
 				for (int j = 1; j < N - 1; j++)
 					if (arr[i][j] == 1)
-						core[size++] = new pair(i, j); // 가장자리 빼고
+						System.out.println(i +" " + j);
+//						core[size++] = new pair(i, j); // 가장자리 빼고
 
 			for (int i = size; i >= 0; i--) {
 				combination(0, 0, i);
