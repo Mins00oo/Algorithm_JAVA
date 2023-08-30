@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
  * 그렇기 때문에 그냥 값을 받아줄때 체크여부를 통해 true로 바꿔주면서 횟수 +1을 해주면 됨
  * 풀이 아이디어는 체크여부라는걸 만들어주면서 칸 하나하나씩 +1을 해준다는 생각으로!
  */
-public class S5_2563_색종이 {
+public class BOJ_2563_색종이 {
 	static int n; // 색종이의 수
 	static StringTokenizer st;
 	static int cnt;

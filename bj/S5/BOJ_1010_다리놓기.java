@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  * 시간초과 발생 -> 어떻게 해결할 ㅅ ㅜ있을까 ..
  * -> 알고보니 규칙이 있는 거였음 ! dp로 풀어보니 시간초과 해결하고 문제 풀 수 있었다
  */
-public class S5_1010_다리놓기 {
+public class BOJ_1010_다리놓기 {
 	static int T, n, m; // 테스트 케이스 개수, 서쪽 사이트 개수, 동쪽 사이트 개수
 	static StringTokenizer st;
 	static int cnt;
@@ -37,9 +37,6 @@ public class S5_1010_다리놓기 {
 //			cnt++;
 //			return;
 //		}
-////		for (int i = stIdx; i < m; i++) {
-////			fun(i + 1, connect + 1);
-////		}
 //		if (stIdx == m) {
 //			return;
 //		}
