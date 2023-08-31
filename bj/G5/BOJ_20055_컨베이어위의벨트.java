@@ -41,6 +41,7 @@ public class BOJ_20055_컨베이어위의벨트 {
 		left--;
 		right--;
 		if (left == -1)
+			
 			left = 2 * n - 1;
 		if (right == -1)
 			right = 2 * n - 1;
