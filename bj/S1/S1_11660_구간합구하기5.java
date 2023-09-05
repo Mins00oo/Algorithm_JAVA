@@ -26,6 +26,7 @@ public class S1_11660_구간합구하기5 {
 		n = Integer.parseInt(st.nextToken());
 		m = Integer.parseInt(st.nextToken());
 		accu = new int[n + 1][n + 1];
+
 		for (int i = 1; i <= n; i++) {
 			st = new StringTokenizer(br.readLine());
 			for (int j = 1; j <= n; j++) {
@@ -33,6 +34,7 @@ public class S1_11660_구간합구하기5 {
 //				System.out.print(accu[i][j]);
 			}
 		}
+
 		for (int i = 0; i < m; i++) {
 			sum = 0;
 			st = new StringTokenizer(br.readLine());
@@ -40,11 +42,13 @@ public class S1_11660_구간합구하기5 {
 			int start_y = Integer.parseInt(st.nextToken());
 			int end_x = Integer.parseInt(st.nextToken());
 			int end_y = Integer.parseInt(st.nextToken());
+
 			for (int j = start_x; j <= end_x; j++) {
 				sum += accu[j][end_y] - accu[j][start_y - 1];
 			}
 			sb.append(sum).append("\n");
 		}
+
 		System.out.println(sb);
 
 	}

@@ -36,6 +36,7 @@ public class S3_11659_구간합구하기4 {
 			st = new StringTokenizer(br.readLine());
 			int from = Integer.parseInt(st.nextToken());
 			int to = Integer.parseInt(st.nextToken());
+			// 구간 합 구하는 공식 -> i,j까지의 합은 accu[i] - accu[j - 1]
 			sb.append(accu[to] - accu[from - 1]).append("\n");
 		}
 		System.out.println(sb);
