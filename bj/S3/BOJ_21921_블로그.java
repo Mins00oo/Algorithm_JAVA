@@ -6,28 +6,30 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class BOJ_21921_블로그 {
+	static int N, X, sum, max, count = 1;
+	static int[] arr;
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		int n = Integer.parseInt(st.nextToken());
-		int x = Integer.parseInt(st.nextToken());
+		N = Integer.parseInt(st.nextToken());
+		X = Integer.parseInt(st.nextToken());
+		arr = new int[N];
 
-		int[] arr = new int[n];
 		st = new StringTokenizer(br.readLine());
-		for (int i = 0; i < n; i++) {
+
+		for (int i = 0; i < N; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 
-		int sum = 0;
-		int max = 0;
-		int count = 1;
-
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < N; i++) {
 			sum += arr[i];
-			if (i == x - 1)
+			// X-1개만큼 선택했을 때 최댓값으로 합을 설정해두고
+			if (i == X - 1) {
 				max = sum;
-			if (i > x - 1) {
-				sum -= arr[i - x];
+			}
+			if (i > X - 1) {
+				sum -= arr[i - X];
 				if (max < sum) {
 					max = sum;
 					count = 1;
@@ -37,10 +39,10 @@ public class BOJ_21921_블로그 {
 			}
 		}
 
-		if (max == 0)
-			System.out.println("SAD");
-		else {
+		if (max != 0) {
 			System.out.println(max + "\n" + count);
+		} else {
+			System.out.println("SAD");
 		}
 	}
 }
