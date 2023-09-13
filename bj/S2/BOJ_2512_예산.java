@@ -27,27 +27,36 @@ public class BOJ_2512_예산 {
 			sum += a;
 		}
 		
-		int start = arr[0];
+		int start = 1;
 		int end = arr[arr.length - 1];
 		
 		// 예산요청의 합이 M보다 작거나 같으면 최댓값 출력 
 		if (sum <= M) {
 			System.out.println(arr[arr.length - 1]);
 		} else {
-			sum = 0;
-			int mid = (start + end) / 2;
+			int mid = 0;
+			while (start <= end) {
+				sum = 0;
+				mid = (start + end) / 2;
 			
-			for (int ar : arr) {
-				if (ar >= mid) {
-					sum += mid;
+				for (int ar : arr) {
+					if (ar >= mid) {
+						sum += mid;
+					} else {
+						sum += ar;
+					}
+				}
+				
+				// 국가예산에서 지급 가능한 수준이라면 상한액을 좀 더 올려보고
+				if (sum <= M) {
+					start = mid + 1;
 				} else {
-					sum += ar;
+					end = mid - 1;
 				}
 			}
 			
-			if (sum <= M) {
-				
-			}
+			System.out.println(end);
+
 		}
 	}
 }
