@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class S2_2961_도영이가만든맛있는음식 {
+public class BOJ_2961_도영이가만든맛있는음식 {
 	static int n; // 재료의 개수
 	static boolean[] select;
 	static int[][] taste;
