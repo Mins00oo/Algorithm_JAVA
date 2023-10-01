@@ -13,6 +13,12 @@ D...*
 .....
 .....
 .S...
+
+D****
+.sXXX
+.s...
+.s...
+.S...
 반례) 5
  */
 public class BOJ_3055_탈출 {
@@ -54,13 +60,6 @@ public class BOJ_3055_탈출 {
 		
 		bfs();
 		
-		for (int i = 0; i < r; i++) {
-			for (int j = 0; j < c; j++) {
-				System.out.print(map[i][j] + " ");
-			}
-			System.out.println();
-		}
-		
 		if(min == Integer.MAX_VALUE) {
 			System.out.println("KAKTUS");
 		} else {
@@ -70,16 +69,12 @@ public class BOJ_3055_탈출 {
 	}
 	
 	static void bfs() {
-		Queue<int[]> queue = new ArrayDeque<>();
-		boolean[][] visited = new boolean[r][c];
-		queue.offer(new int[] {sx, sy, 0});
+		Queue<int[]> queue = new ArrayDeque<>(); // 고슴도치 좌표
+		boolean[][] visited = new boolean[r][c]; // 고슴도치의 방문을 확인하기 위해
+		queue.offer(new int[] {sx, sy, 0}); // x, y 좌표와 이동거리
 		visited[sx][sy] = true;
 		
 		while (!queue.isEmpty()) {
-			int[] cur = queue.poll();
-			if (cur[0] == ex && cur[1] == ey) {
-				min = Math.min(min, cur[2]);
-			}
 			int wq_size = water.size();
 			// 물의 좌표를 가져와서 먼저 전부 확산 시켜주고
 			for(int k = 0; k < wq_size; k++) {
@@ -102,21 +97,29 @@ public class BOJ_3055_탈출 {
 					}
 				}
 			}
-			// 이제 고슴도치를 이동
-			for (int i = 0; i < 4; i++) {
-				int nx = cur[0] + dx[i];
-				int ny = cur[1] + dy[i];
-				if (nx < 0 || nx >= r || ny < 0 || ny >= c) { // 범위를 벗어난다면
-					continue;
+			int q_size = queue.size();
+			
+			for (int k = 0; k < q_size; k++) {
+				int[] cur = queue.poll();
+				if (cur[0] == ex && cur[1] == ey) {
+					min = Math.min(min, cur[2]);
 				}
-				if (map[nx][ny] == 'X' || map[nx][ny] == '*') {
-					continue;
-				}
-				if (!visited[nx][ny]) {
-					visited[nx][ny] = true;
-					map[nx][ny] = 'S';
-					queue.offer(new int[] {nx, ny, cur[2] + 1});
-				}
+				// 이제 고슴도치를 이동
+				for (int i = 0; i < 4; i++) {
+					int nx = cur[0] + dx[i];
+					int ny = cur[1] + dy[i];
+					if (nx < 0 || nx >= r || ny < 0 || ny >= c) { // 범위를 벗어난다면
+						continue;
+					}
+					if (map[nx][ny] == 'X' || map[nx][ny] == '*') {
+						continue;
+					}
+					if (!visited[nx][ny]) {
+						visited[nx][ny] = true;
+						map[nx][ny] = 'S';
+						queue.offer(new int[] {nx, ny, cur[2] + 1});
+					}
+				}	
 			}
 		}
 	}
