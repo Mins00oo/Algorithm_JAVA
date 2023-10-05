@@ -90,6 +90,8 @@ public class SWEA_벽돌깨기 {
 	
 	static void destroy(int[] tgt) {
 		des = 0;
+		int[][] copyMap = new int[H][W];
+		copyMap = map;
 		// 부서야 하는 열의 번호를 가져와서 
 		for (int i = 0; i < tgt.length; i++) {
 			int col = tgt[i]; // 부서야 하는 열의 번호
@@ -97,7 +99,7 @@ public class SWEA_벽돌깨기 {
 			int x = 0;
 			int y = col;
 			for (int j = 0; j < H; j++) {
-				if (map[j][col] != 0) {
+				if (copyMap[j][col] != 0) {
 					x = j;
 					break;
 				}
@@ -110,15 +112,15 @@ public class SWEA_벽돌깨기 {
 			
 			while (!queue.isEmpty()) {
 				int[] cur = queue.poll();
-				int cnt = map[cur[0]][cur[1]]; // 이 cnt만큼 bfs를 넓힐것이기 때문에
+				int cnt = copyMap[cur[0]][cur[1]]; // 이 cnt만큼 bfs를 넓힐것이기 때문에
 //				System.out.println(cur[0] + " " + cur[1] + " " + cnt);
-				map[cur[0]][cur[1]] = 0;
+				copyMap[cur[0]][cur[1]] = 0;
 				for (int d = 0; d < 4; d++) {
 					for (int j = 1; j < cnt; j++) {
 						int nx = cur[0] + dx[d] * j;
 						int ny = cur[1] + dy[d] * j;
 						
-						if(nx < 0 || ny < 0 || nx >= W || ny >= H || map[nx][ny] == 0) continue;
+						if(nx < 0 || ny < 0 || nx >= W || ny >= H || copyMap[nx][ny] == 0) continue;
 						if (!visited[nx][ny]) {
 							visited[nx][ny] = true;
 							queue.offer(new int[] {nx, ny});
@@ -129,14 +131,25 @@ public class SWEA_벽돌깨기 {
 				}		
 			}
 			
-			for (int k = 0; k < H; k++) {
-				for (int w = 0; w < W; w++) {
-					System.out.print(map[k][w] + " ");
+			for (int j = 0; j < H; j++) {
+				for (int j2 = 0; j2 < W; j2++) {
+					System.out.print(copyMap[j][j2] + " ");
 				}
 				System.out.println();
 			}
 			
+			System.out.println("--");
+			
+			// 벽돌을 bfs로 다 부쉈으면 빈 공간은 내려주고
+			for (int c = 0; c < W; c++) {
+				
+			}
+			
 		}
+	}
+	
+	static void push() {
+		
 	}
 }
 
