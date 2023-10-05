@@ -2,7 +2,7 @@ package programmers.Lv2;
 
 import java.util.Stack;
 
-public class PSG_LV2_올바른괄호 {
+public class PGS_올바른괄호 {
 	
 	public static void main(String[] args) {
 		System.out.println(solution("()()"));

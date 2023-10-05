@@ -2,7 +2,7 @@ package programmers.Lv2;
 
 import java.util.Arrays;
 
-public class PSG_LV2_최솟값만들기 {
+public class PGS_최솟값만들기 {
 
 	public static void main(String[] args) {
 		solution(new int[]{1, 4, 2}, new int[]{5, 4, 4});
