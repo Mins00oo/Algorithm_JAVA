@@ -24,7 +24,7 @@ import java.util.StringTokenizer;
 
 벽돌을 깬 후에 공간을 내려주는 부분만 구현해서 마무리하도록!
  */
-public class SWEA_벽돌깨기 {
+public class SWEA_5656_벽돌깨기 {
 	static int T, N, W, H, total, des, min = Integer.MAX_VALUE;
 	static int[] src, tgt;
 	static boolean[] select;
