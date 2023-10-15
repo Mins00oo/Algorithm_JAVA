@@ -9,7 +9,7 @@ public class PGS_튜플 {
     
     public List<Integer> solution(String s) {
         s = s.substring(2, s.length() - 2);
-        s = s.replace("},{", "-");
+        s = s.replace("},{", "-");  
         String [] arr = s.split("-");
         // 문자열 길이가 짧은 순으로 정렬
         Arrays.sort(arr, (o1, o2) -> o1.length() - o2.length()); 
