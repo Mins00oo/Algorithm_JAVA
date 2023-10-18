@@ -48,7 +48,7 @@ public class PGS_주차_요금_계산 {
                 int diff = endTime - inTime;
                 if (time.containsKey(entry.getKey())) {
                     time.put(entry.getKey(), time.get(entry.getKey()) + diff);
-                } else {
+                } else { 
                     time.put(entry.getKey(), diff);   
                 }
             }
