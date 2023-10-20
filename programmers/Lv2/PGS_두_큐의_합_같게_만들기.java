@@ -2,7 +2,13 @@ package programmers.Lv2;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
-
+//목표 합을 구해놓고 (전체 합의 절반) 각 큐의 합을 매번 구하면서 목표보다 큰 큐에서 하나를 꺼내고 반대에 넣고
+/*
+- Long.valueOf
+- 시간초과 최대한 줄이기 위해 반복문 제거
+ - 최대 경우의 수를 넘게 되면 중단시키도록 
+ - 그냥 예외를 던져서 처리하도록 했음
+*/
 public class PGS_두_큐의_합_같게_만들기 {
     static long sum1; // queue1 합
     static long sum2; // queue2 합
