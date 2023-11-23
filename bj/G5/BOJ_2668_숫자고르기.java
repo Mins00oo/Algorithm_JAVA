@@ -5,7 +5,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/*
+ * 1부터 N까지 dfs로 사이클이 발생하는지 여부에 따라서
+ * 발생한다면 정답 리스트에 추가
+ */
 public class BOJ_2668_숫자고르기 {
 	static int N;
 	static int[] arr;
