@@ -1,10 +1,7 @@
 package programmers.Lv2;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class PGS_2개_이하로_다른비트 {
-    
+
     public long[] solution(long[] numbers) {
         long[] answer = new long[numbers.length];
         for (int i = 0; i < numbers.length; i++) {
@@ -26,7 +23,8 @@ public class PGS_2개_이하로_다른비트 {
         }
         return answer;
     }
-    
+
+
     // 시간초과 코드
 //    static List<Integer> answer = new ArrayList<>();
 //    
